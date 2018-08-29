@@ -1,0 +1,43 @@
+<html>
+<body>
+<title>PIXEL CROPPER</title>
+<body>
+
+
+<h2 class="example">Image to use:</h2>
+<p><img id="scream" src="AC-fan.jpg" alt="The Scream"></p>
+
+<h2 class="example">Example</h2>
+<p>Use getImageData() to invert the color of every pixels of an image on the canvas:</p>
+
+<canvas id="myCanvas2" width="400" height="300" style="position:fixed;left:250;top:140px;border:1px solid #d3d3d3;background:#ffffff;">
+YourbrowserdoesnotsupporttheHTML5canvastag.</canvas>
+
+<script>
+var c=document.getElementById("myCanvas2");
+var ctx=c.getContext("2d");
+var img=document.getElementById("scream");
+ctx.drawImage(img,0,0);
+var imgData=ctx.getImageData(0,0,c.width,c.height);
+
+for (var i=0;i<imgData.data.length;i+=4)
+  {
+  r = imgData.data[i];
+  g = imgData.data[i+1];
+  b = imgData.data[i+2];
+  a = imgData.data[i+3];
+ 
+  //set range for editing
+   if (r+b+g<70){
+  imgData.data[i+3]=0;
+  }   
+  
+  
+ // }
+  }
+  
+ctx.putImageData(imgData,0,0);
+</script> 
+
+</body>
+</html>
